@@ -9,7 +9,7 @@
   <div class="container mt-5">
     <h1 class="fw-bold mb-2">index</h1>
 
-    <a href="{% url 'account-book:new' %}" class="fw-bold mb-3 fs-4">New</a>
+    <a href="{% url 'account-books:new' %}" class="fw-bold mb-3 fs-4">New</a>
 
     <div>
       <table class="table table-hover">
@@ -27,18 +27,18 @@
             <tr>
               <th scope="row">{{ account.pk }}</th>
               <td>
-                <a href="{% url 'account-book:detail' account.pk %}">{{ account.note }}</a>
+                <a class="d-block text-dark" href="{% url 'account-books:detail' account.pk %}">{{ account.note }}</a>
               </td>
-              <td>{{ account.category }}</td>
-              <td>{{ account.amount }}</td>
-              <td>{{ account.date }}</td>
+              <td><a class="d-block text-dark" href="{% url 'account-books:detail' account.pk %}">{{ account.category }}</a></td>
+              <td><a class="d-block text-dark" href="{% url 'account-books:detail' account.pk %}">{{ account.amount }}</a></td>
+              <td><a class="d-block text-dark" href="{% url 'account-books:detail' account.pk %}">{{ account.date }}</a></td>
             </tr>
           {% endfor %}
         </tbody>
       </table>
 
       <div class="mt-5">
-        <a href="{% url 'account-book:index' %}">[Home]</a>
+        <a href="{% url 'account-books:index' %}">[Home]</a>
       </div>
 
     </div>
