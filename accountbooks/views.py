@@ -4,10 +4,23 @@ from .models import AccountBook
 
 # Create your views here.
 def index(request):
+    # accountbooks = AccountBook.objects.all()
     accountbooks = AccountBook.objects.all()
+    if request.POST.get('ID') == "True":
+        filtered = accountbooks.order_by('pk')
+    else:
+        filtered = accountbooks.order_by('-pk')
     
     context = {
-        'accountbooks': accountbooks,
+        'accountbooks': filtered,
+        'order': {
+            'id': True if request.POST.get('ID') == 'True' else False,
+            'note': True if request.POST.get('note') == 'True' else False,
+            'category': True if request.POST.get('category') == 'True' else False,
+            'amount': True if request.POST.get('amount') == 'True' else False,
+            'date': True if request.POST.get('date') == 'True' else False,
+        }
+
     }
     return render(request, 'accountbooks/index.html', context)
 
@@ -55,6 +68,7 @@ def delete (_, pk):
 def copy(_, pk):
     account = AccountBook.objects.get(pk=pk)
     account.pk = None
+    account.note = '[복사본] ' + account.note
     account.save()
     
     return redirect('account-books:index')
@@ -79,3 +93,12 @@ def update(request, pk):
     account.save()
     
     return redirect('account-books:detail', account.pk)
+
+
+def order(request):
+    g = request.POST.get
+    print(g('ID'))
+    context = {
+        
+    }
+    return redirect('account-books:index')

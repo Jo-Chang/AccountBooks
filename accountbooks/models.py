@@ -10,3 +10,15 @@ class AccountBook(models.Model):
     date = models.DateField()   # 사용할 날짜
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+
+class Order(models.Model):
+    '''
+    True -> ASC
+    False -> DESC
+    '''
+    id_order = models.BooleanField(default=True)
+    note_order = models.BooleanField(default=True)
+    category_order = models.BooleanField(default=True)
+    amount_order = models.BooleanField(default=True)
+    date_order = models.BooleanField(default=True)

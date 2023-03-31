@@ -12,4 +12,5 @@ urlpatterns = [
     path('<int:pk>/copy/', views.copy, name='copy'),
     path('<int:pk>/edit/', views.edit, name='edit'),
     path('<int:pk>/update/', views.update, name='update'),
+    path('order/', views.order, name='order'),
 ]
