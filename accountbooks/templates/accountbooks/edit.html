@@ -10,7 +10,7 @@
   <div class="container mt-5">
     <h1 class="fw-bold mb-3">Edit</h1>
 
-    <form action="{% url 'account-books:create' %}" method="POST" class="card-width">
+    <form action="{% url 'account-books:update' data.pk %}" method="POST" class="card-width">
       {% csrf_token %}
       <div class="mb-2">
         <label for="note" class="mb-1 fw-bold form-label">내용</label>

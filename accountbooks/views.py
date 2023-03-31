@@ -69,7 +69,7 @@ def edit(request, pk):
 
 
 def update(request, pk):
-    account = AccountBook(pk=pk)
+    account = AccountBook.objects.get(pk=pk)
     g = request.POST.get
     account.note = g('note') if g('note') else '미정'
     account.category = g('category') if g('category') else '미정'
