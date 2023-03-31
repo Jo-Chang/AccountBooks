@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>index</title>
+{% endblock title %}
+
+
+{% block content %}
+  <div class="container mt-5">
+    <h1 class="fw-bold mb-2">index</h1>
+
+    <a href="{% url 'account-book:new' %}" class="fw-bold mb-3 fs-4">New</a>
+
+    <div>
+      <table class="table table-hover">
+        <thead>  
+          <tr class="">
+            <th scope="col">ID</th>
+            <th scope="col">내용</th>
+            <th scope="col">분류</th>
+            <th scope="col">사용 금액</th>
+            <th scope="col">사용 날짜</th>
+          </tr>
+        </thead>
+        <tbody class="">
+          {% for account in accountbooks %}
+            <tr>
+              <th scope="row">{{ account.pk }}</th>
+              <td>
+                <a href="{% url 'account-book:detail' account.pk %}">{{ account.note }}</a>
+              </td>
+              <td>{{ account.category }}</td>
+              <td>{{ account.amount }}</td>
+              <td>{{ account.date }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <div class="mt-5">
+        <a href="{% url 'account-book:index' %}">[Home]</a>
+      </div>
+
+    </div>
+  </div>
+{% endblock content %}
